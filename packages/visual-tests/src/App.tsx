@@ -17,10 +17,7 @@ import {
   Small,
   ContiamoLogo,
   Page,
-  PageContent,
 } from "@operational/components"
-
-import { darken } from "@operational/utils"
 
 import Marathon, { MarathonEnvironment } from "./Marathon"
 import MarathonRenderer from "./MarathonRenderer"
@@ -110,7 +107,7 @@ class App extends React.Component<{}, State> {
                 <SidenavHeader
                   key={groupIndex}
                   label={test.title}
-                  active={groupIndex === this.state.group}
+                  active
                   onToggle={() => {
                     this.setState(() => ({
                       group: groupIndex,
@@ -140,7 +137,7 @@ class App extends React.Component<{}, State> {
               actions={
                 <>
                   <Button
-                    icon="ExternalLink"
+                    icon="Open"
                     condensed
                     color="ghost"
                     to={`https://github.com/contiamo/operational-ui/tree/master/packages/visual-tests/src/TestCases/${
@@ -167,27 +164,25 @@ class App extends React.Component<{}, State> {
                 </>
               }
             >
-              <PageContent>
-                <Card>
-                  <Marathon
-                    test={test}
-                    onCompleted={() => {
-                      if (!this.state.isLooping && !this.state.isIdle) {
-                        this.setState(prevState => ({
-                          isIdle: true,
-                        }))
-                        return
-                      }
-                      if (this.state.isLooping) {
-                        this.loop()
-                      }
-                    }}
-                    timeout={2000}
-                  >
-                    {MarathonRenderer}
-                  </Marathon>
-                </Card>
-              </PageContent>
+              <Card>
+                <Marathon
+                  test={test}
+                  onCompleted={() => {
+                    if (!this.state.isLooping && !this.state.isIdle) {
+                      this.setState(prevState => ({
+                        isIdle: true,
+                      }))
+                      return
+                    }
+                    if (this.state.isLooping) {
+                      this.loop()
+                    }
+                  }}
+                  timeout={2000}
+                >
+                  {MarathonRenderer}
+                </Marathon>
+              </Card>
             </Page>
           }
         />
