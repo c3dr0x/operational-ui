@@ -44,20 +44,18 @@ const fillProgress = keyframes({
   },
 })
 
-const Bar = styled("div")(
-  ({ theme, isError }: { theme?: OperationalStyleConstants; isError: boolean }) => ({
-    width: "100%",
-    height: 3,
-    backgroundColor: theme.deprecated.colors.info,
-    ...(isError
-      ? {
-          backgroundColor: theme.deprecated.colors.error,
-        }
-      : {
-          animation: `${fillProgress} cubic-bezier(0, 0.9, 0.26, 1) forwards 20s`,
-        }),
-  }),
-)
+const Bar = styled("div")(({ theme, isError }: { theme?: OperationalStyleConstants; isError: boolean }) => ({
+  width: "100%",
+  height: 3,
+  backgroundColor: theme.deprecated.colors.info,
+  ...(isError
+    ? {
+        backgroundColor: theme.deprecated.colors.error,
+      }
+    : {
+        animation: `${fillProgress} cubic-bezier(0, 0.9, 0.26, 1) forwards 20s`,
+      }),
+}))
 
 const ErrorMessage = styled("div")(({ theme }: WithTheme) => ({
   ...theme.deprecated.typography.body,
