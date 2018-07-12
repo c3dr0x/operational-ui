@@ -31,7 +31,7 @@ export interface State {
   isOpen: boolean
 }
 
-const Container = styled("div")(({ theme, align }: { theme?: OperationalStyleConstants; align: "left" | "right" }) => ({
+const Container = styled("div")(({ theme, align }: { theme?: OperationalStyleConstants; align: Props["align"] }) => ({
   label: "contextmenu",
   cursor: "pointer",
   position: "relative",
@@ -57,7 +57,7 @@ const MenuContainer = styled("div")(
 )
 
 const StyledContextMenuItem = styled(ContextMenuItem)(
-  ({ theme, align }: { theme?: OperationalStyleConstants; align: "left" | "right" }) => ({
+  ({ theme, align }: { theme?: OperationalStyleConstants; align: Props["align"] }) => ({
     color: theme.color.text.default,
     textAlign: align,
   }),
